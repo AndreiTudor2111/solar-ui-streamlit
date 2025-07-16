@@ -6,18 +6,22 @@ from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, firestore, storage as fb_storage
 from generate_db import generate_and_upload_db
+import json
+import tempfile
 
 @st.cache_resource
 def init_db():
     if not firebase_admin._apps:
-        # secrets give us "firebase_admin_config.json"
-        rel = st.secrets["firebase_admin"]["cred_path"]
+        # ✅ Citește din secrets
+        firebase_json = json.loads(st.secrets["firebase_admin_config"])
+
+        # ✅ Scrie configul temporar
+        with tempfile.NamedTemporaryFile(mode="w+", delete=False) as tmp:
+            json.dump(firebase_json, tmp)
+            tmp.flush()
+            cred = credentials.Certificate(tmp.name)
+
         bucket_name = st.secrets["firebase_admin"]["bucket"]
-
-        # resolve relative to current working directory (project root)
-        cred_path = os.path.join(os.getcwd(), rel)
-
-        cred = credentials.Certificate(cred_path)
         firebase_admin.initialize_app(cred, {"storageBucket": bucket_name})
 
     db = firestore.client()

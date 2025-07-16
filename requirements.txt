@@ -1,5 +1,6 @@
-gradio
-tensorflow
-scikit-learn
-numpy
+streamlit
+requests
 pandas
+Werkzeug
+huggingface_hub
+firebase-admin==6.4.0

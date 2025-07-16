@@ -1,0 +1,10 @@
+{
+  "apiKey": "AIzaSyBIF0WE_qAWtzeNtyRQuvtRRng2sI2aeeU",
+  "authDomain": "dizertatie-43ab8.firebaseapp.com",
+  "projectId": "dizertatie-43ab8",
+  "storageBucket": "dizertatie-43ab8.appspot.com",
+  "messagingSenderId": "679896068269",
+  "appId": "1:679896068269:web:4f9f371048c5178394d624",
+  "databaseURL": "https://dizertatie-43ab8.firebaseio.com", 
+  "weather_api_key": "6c9723a171b94330b3c153524252406"
+}

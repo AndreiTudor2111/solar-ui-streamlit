@@ -3,4 +3,29 @@ requests
 pandas
 Werkzeug
 huggingface_hub
+# UI & frontend
+streamlit
+gradio
+
+# Firebase
+firebase-admin
+
+# Hugging Face
+huggingface_hub
+datasets
+
+# Model training + job submission
+requests
+werkzeug
+joblib
+
+# Date, prelucrare, statistici
+pandas
+numpy
+scikit-learn
+
+# Machine Learning / Deep Learning
+tensorflow
+
+
 firebase-admin==6.4.0

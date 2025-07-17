@@ -13,7 +13,8 @@ import tempfile
 def init_db():
     if not firebase_admin._apps:
         # ✅ Citește din secrets
-        firebase_json = json.loads(st.secrets["firebase_admin_config"])
+        firebase_json = json.loads(st.secrets["firebase_admin"]["firebase_admin_config"])
+
 
         # ✅ Scrie configul temporar
         with tempfile.NamedTemporaryFile(mode="w+", delete=False) as tmp:

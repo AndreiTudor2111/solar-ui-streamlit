@@ -30,6 +30,7 @@ def init_firebase():
     if not firebase_admin._apps:
         # calea relativă către cheia JSON, salvată în secrets.toml
         rel = st.secrets["firebase_admin"]["cred_path"]
+
         bucket_name = st.secrets["firebase_admin"]["bucket"]
         cred_path = os.path.join(PROJECT_ROOT, rel)
         cred = credentials.Certificate(cred_path)
@@ -97,7 +98,10 @@ def submit_training_job(user_id: str, run_id: str, config: dict):
     try:
         resp = requests.post("https://AndreiTdr-aplciatie.hf.space/run/predict", json=payload, timeout=120)
         resp.raise_for_status()
-        job_output = resp.json()["data"][0]
+        response_json = resp.json()
+        job_output = response_json.get("data", ["<niciun răspuns>"])[0]
+        print("Training job response:", response_json)
+
         st.success("🚀 Job trimis către Hugging Face Space!")
         st.code(job_output)
         return f"{user_id}_{run_id}"
